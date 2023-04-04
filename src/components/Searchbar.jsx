@@ -1,28 +1,31 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Component } from 'react';
 import './styles.css';
 
 export class Searchbar extends Component {
   state = {
-    value: '',
+    inputValue: '',
   };
 
   handleChange = event => {
-    this.setState({ value: event.currentTarget.value.toLowerCase() });
+    this.setState({ inputValue: event.currentTarget.value.toLowerCase() });
   };
 
   handleSubmit = event => {
     event.preventDefault();
 
-    if (this.state.value.trim() === '') {
+    if (this.state.inputValue.trim() === '') {
       alert('Введіть текст в поле пошуку!');
+      // toast.error(
+      //   'Введіть текст в поле пошуку!'
+      // );
       return;
     }
 
-    this.props.onSubmit(this.state.searchText);
+    this.props.onSubmit(this.state.inputValue);
 
     console.log(this.state);
-    this.setState({ value: '' });
+    this.setState({ inputValue: '' });
   };
 
   render() {
@@ -39,7 +42,7 @@ export class Searchbar extends Component {
             autoFocus
             placeholder="Search images and photos"
             onChange={this.handleChange}
-            value={this.state.value}
+            value={this.state.inputValue}
           />
         </form>
       </header>
