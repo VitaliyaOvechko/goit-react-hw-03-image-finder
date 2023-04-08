@@ -1,6 +1,8 @@
-// import PropTypes from 'prop-types';
 import { Component } from 'react';
 import './styles.css';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { ImSearch } from 'react-icons/im';
 
 export class Searchbar extends Component {
   state = {
@@ -15,16 +17,14 @@ export class Searchbar extends Component {
     event.preventDefault();
 
     if (this.state.inputValue.trim() === '') {
-      alert('Введіть текст в поле пошуку!');
-      // toast.error(
-      //   'Введіть текст в поле пошуку!'
-      // );
+      toast.error('Please enter text in the search field!', {
+        theme: 'colored',
+      });
       return;
     }
 
     this.props.onSubmit(this.state.inputValue);
 
-    console.log(this.state);
     this.setState({ inputValue: '' });
   };
 
@@ -33,7 +33,7 @@ export class Searchbar extends Component {
       <header className="searchbar">
         <form className="searchForm" onSubmit={this.handleSubmit}>
           <button type="submit" className="searchForm-button">
-            <span className="searchForm-button-label">Search</span>
+            <ImSearch />
           </button>
           <input
             className="searchForm-input"
