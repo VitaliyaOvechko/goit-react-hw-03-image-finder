@@ -1,8 +1,13 @@
 import { Component } from 'react';
-import './styles.css';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ImSearch } from 'react-icons/im';
+import {
+  SearchButton,
+  SearchForm,
+  SearchHeader,
+  SearchInput,
+} from './Searchbar.styled';
 
 export class Searchbar extends Component {
   state = {
@@ -30,12 +35,12 @@ export class Searchbar extends Component {
 
   render() {
     return (
-      <header className="searchbar">
-        <form className="searchForm" onSubmit={this.handleSubmit}>
-          <button type="submit" className="searchForm-button">
+      <SearchHeader>
+        <SearchForm onSubmit={this.handleSubmit}>
+          <SearchButton type="submit">
             <ImSearch />
-          </button>
-          <input
+          </SearchButton>
+          <SearchInput
             className="searchForm-input"
             type="text"
             autoComplete="off"
@@ -44,8 +49,8 @@ export class Searchbar extends Component {
             onChange={this.handleChange}
             value={this.state.inputValue}
           />
-        </form>
-      </header>
+        </SearchForm>
+      </SearchHeader>
     );
   }
 }

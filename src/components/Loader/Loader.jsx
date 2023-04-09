@@ -1,10 +1,10 @@
 import { RotatingLines } from 'react-loader-spinner';
-import './styles.css';
+import { LoaderSpin } from './Loader.styled';
 
 export const Loader = () => {
   return (
-    <div className="loader-spin">
+    <LoaderSpin>
       <RotatingLines strokeColor="blue" />
-    </div>
+    </LoaderSpin>
   );
 };
